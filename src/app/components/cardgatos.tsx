@@ -13,25 +13,16 @@ interface CardGatosProps {
 
 const Cardgatos: React.FC<CardGatosProps> = ({ cats }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', marginLeft: '130px' }}>
+    <div className='flex flex-wrap gap-10 ml-[130px]'>
       {cats.map((cat) => (
         <Link key={cat.id} href={`/cat/${cat.id}`}>
-          <div
-            style={{
-              border: '2px solid #ccc',
-              borderRadius: '8px',
-              padding: '10px',
-              textAlign: 'center',
-              width: '350px',
-              boxShadow: '2px 2px 10px rgba(0,0,0,0.1)',
-            }}
-          >
+    <div className="border-2 border-gray-300 rounded-lg p-2.5 text-center w-[350px] shadow-md">
             <img
-              src={cat.url}
-              alt={`Gato ${cat.id}`}
-              style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '8px' }}
+               src={cat.url} 
+               alt={`Gato ${cat.id}`} 
+               className="w-full h-[300px] object-cover rounded-lg"
             />
-            <h3 style={{ marginTop: '10px' }}>{cat.breedName}</h3>
+            <h3 className="mt-2.5">{cat.breedName}</h3>
           </div>
         </Link>
       ))}
