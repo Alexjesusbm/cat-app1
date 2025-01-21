@@ -35,7 +35,7 @@ export default function Dadosgato() {
 
   return (
     <div className="text-center p-5 h-full font-sans text-gray-2000 bg-[url('/fundo.png')] bg-cover bg-no-repeat bg-center m-0 min-h-screen">
-      <h1>{cat.breeds ? cat.breeds[0].name : 'Nome não disponível'}</h1>
+      <h1 className='font-bold text-xl'>{cat.breeds ? cat.breeds[0].name : 'Nome não disponível'}</h1>
       <img src={cat.url} alt="Gato" className="w-[400px] block mx-auto"/>
       {cat.breeds && (
         <div>

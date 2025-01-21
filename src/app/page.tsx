@@ -11,8 +11,9 @@ export default async function Home() {
         <link rel="icon" href="/favicon.ico" />
     </Head>
       <div className="h-full font-sans text-gray-2000 bg-[url('/fundo.png')] bg-cover bg-no-repeat bg-center m-0 min-h-screen">
-        <h1 className='text-center'>Galeria de gatos</h1> {/* Título */}
+        <h1 className='text-center font-bold text-xl'>Galeria de gatos</h1> {/* Título */}
         <Cardgatos cats={cats} /> {/* Componente para renderizar a lista */}
+        
       </div>
     </>
   );
