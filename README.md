@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+const nextPage = () => setPage((prev) => prev + 1);
+  const prevPage = () => setPage((prev) => (prev > 0 ? prev - 1 : 0));
+
+<button
+            onClick={prevPage}
+            className="px-5 py-2 bg-gray-500 text-white rounded-md"
+            disabled={page === 0}
+          >
+            Página Anterior
+          </button>
+          <button
+            onClick={nextPage}
+            className="px-5 py-2 bg-blue-500 text-white rounded-md"
+          >
+            Próxima Página
+          </button>

@@ -1,19 +1,5 @@
 import axios from 'axios';
 
-// Defina os tipos para as respostas da API e os gatos
-interface Cat {
-  id: string;
-  url: string;
-}
-
-interface DetailedCat extends Cat {
-  breedName: string;
-}
-
-interface Breed {
-  name: string;
-}
-
 const apiClient = axios.create({
   baseURL: 'https://api.thecatapi.com/v1',
   headers: {
@@ -21,14 +7,12 @@ const apiClient = axios.create({
   },
 });
 
-export const fetchCats = async (limit: number = 10): Promise<DetailedCat[]> => {
-  const response = await apiClient.get<Cat[]>('/images/search', {
-    params: { limit, has_breeds: 1 },
+export const fetchCats = async (limit: number = 3, page: number = 0) => {
+  const response = await apiClient.get('/images/search', {
+    params: { limit, page, has_breeds: 1 },
   });
-
-  // Usando Promise.all para buscar detalhes de cada gato
-  const detailedCats = await Promise.all(
-    response.data.map(async (cat) => {
+  return await Promise.all(
+    response.data.map(async (cat: any) => {
       const detailedCat = await fetchCatById(cat.id);
       return {
         id: cat.id,
@@ -37,11 +21,9 @@ export const fetchCats = async (limit: number = 10): Promise<DetailedCat[]> => {
       };
     })
   );
-
-  return detailedCats;
 };
 
-export const fetchCatById = async (id: string): Promise<{ breeds?: Breed[] }> => {
-  const response = await apiClient.get<{ breeds?: Breed[] }>(`/images/${id}`);
+export const fetchCatById = async (id: string) => {
+  const response = await apiClient.get(`/images/${id}`);
   return response.data;
 };
