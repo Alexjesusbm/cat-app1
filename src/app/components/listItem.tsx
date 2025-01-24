@@ -10,7 +10,7 @@ interface ListItemProps {
 }
 
 const ListItem: React.FC<ListItemProps> = ({ cats }) => (
-  <div className='flex flex-wrap gap-10 justify-center'>
+  <div className='flex flex-wrap gap-5 justify-center'>
     {cats.map((cat) => (
       <CardItem key={cat.id} id={cat.id} url={cat.url} breedName={cat.breedName} />
     ))}
